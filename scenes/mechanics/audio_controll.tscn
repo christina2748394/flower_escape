@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ba5iljmgxikv1"]
+
+[ext_resource type="Script" path="res://scripts/audio_controll.gd" id="1_6qpm2"]
+[ext_resource type="AudioStream" uid="uid://dyvkl6ngdsh75" path="res://assets/music/FarBeyond Studio - Freebies Vol. 1 - 05 - Sneaky (CC-BY 4.0).wav" id="2_lbyuj"]
+[ext_resource type="AudioStream" uid="uid://dhfrrmeqolkrw" path="res://assets/music/torone-music-loops-pack-01-dark-fantasy-exploration-2.ogg" id="3_hu8r6"]
+[ext_resource type="AudioStream" uid="uid://c4ixhrijkywnx" path="res://assets/music/FootstepsConcrete1.ogg" id="4_a4i5w"]
+[ext_resource type="AudioStream" uid="uid://brd6p4m63qnib" path="res://assets/music/coin.wav" id="5_dptg3"]
+[ext_resource type="AudioStream" uid="uid://c7oalm3lghnno" path="res://assets/music/hurt.wav" id="6_cvio4"]
+
+[node name="AudioControll" type="Node"]
+script = ExtResource("1_6qpm2")
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lbyuj")
+volume_db = -25.572
+autoplay = true
+
+[node name="bg2_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hu8r6")
+volume_db = -30.0
+
+[node name="footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a4i5w")
+volume_db = -17.82
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dptg3")
+volume_db = -30.0
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cvio4")
+volume_db = -20.0

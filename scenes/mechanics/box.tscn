@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwhus7fcwj42i"]
+
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_s3ylq"]
+[ext_resource type="Texture2D" uid="uid://buasj5d50o66b" path="res://assets/sprites/World/Legacy_Adventure_Pack/Assets/Assets.png" id="1_y33a8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppjsa"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs6eh"]
+size = Vector2(9, 28)
+
+[node name="box" type="CharacterBody2D"]
+script = ExtResource("1_s3ylq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y33a8")
+region_enabled = true
+region_rect = Rect2(191.927, 31.7453, 32.042, 32.3427)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ppjsa")
+
+[node name="left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-13, 2)
+shape = SubResource("RectangleShape2D_qs6eh")
+
+[node name="right" type="Area2D" parent="."]
+position = Vector2(26, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(-13, 2)
+shape = SubResource("RectangleShape2D_qs6eh")
+
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="body_exited" from="left" to="." method="_on_left_body_exited"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
+[connection signal="body_exited" from="right" to="." method="_on_right_body_exited"]

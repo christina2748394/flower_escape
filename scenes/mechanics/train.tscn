@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://eaxmjblgtvn7"]
+
+[ext_resource type="Texture2D" uid="uid://bia64m7wyybj5" path="res://assets/train.png" id="1_3cim0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tn75"]
+size = Vector2(34.5, 7)
+
+[node name="train" type="AnimatableBody2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3cim0")
+region_enabled = true
+region_rect = Rect2(2, 15, 43, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 8)
+shape = SubResource("RectangleShape2D_1tn75")

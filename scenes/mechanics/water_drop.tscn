@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=3 uid="uid://c22agjer7rvjh"]
+
+[ext_resource type="Script" path="res://scripts/water_drop.gd" id="1_731bl"]
+[ext_resource type="Texture2D" uid="uid://cm5n0qmvrxdlb" path="res://assets/sprites/Mechanices/WaterDroplet.png" id="1_xfqk6"]
+[ext_resource type="AudioStream" uid="uid://brd6p4m63qnib" path="res://assets/music/coin.wav" id="3_re0ne"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1lug"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="Gradient" id="Gradient_p6w4v"]
+offsets = PackedFloat32Array(0, 0.00974026, 0.298701, 0.438312, 0.737013)
+colors = PackedColorArray(0.815686, 0.815686, 0.815686, 0.321569, 0.245864, 0.865355, 0.848583, 1, 0.698039, 0.784314, 0.788235, 0.396078, 0, 0, 0, 0.65098, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i1uod"]
+gradient = SubResource("Gradient_p6w4v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Animation" id="Animation_gu1tb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rlkiu"]
+resource_name = "pick_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rh5v"]
+_data = {
+"RESET": SubResource("Animation_gu1tb"),
+"pick_up": SubResource("Animation_rlkiu")
+}
+
+[node name="WaterDrop" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_731bl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xfqk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b1lug")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.980549, 0.923469)
+texture = SubResource("GradientTexture2D_i1uod")
+texture_scale = 0.49
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8rh5v")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_re0ne")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

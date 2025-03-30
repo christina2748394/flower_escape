@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://buewqqoauhlda"]
+
+[ext_resource type="Texture2D" uid="uid://buasj5d50o66b" path="res://assets/sprites/World/Legacy_Adventure_Pack/Assets/Assets.png" id="1_hsy1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7ljx"]
+size = Vector2(4, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g84n"]
+size = Vector2(6.99973, 63.9801)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i83e4"]
+size = Vector2(2, 76.5)
+
+[node name="swing" type="Node2D"]
+
+[node name="dot2" type="StaticBody2D" parent="."]
+position = Vector2(-2, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="dot2"]
+position = Vector2(1.90735e-06, 0)
+rotation = -1.56876
+texture = ExtResource("1_hsy1q")
+region_enabled = true
+region_rect = Rect2(228.912, 241.916, 4.08231, 4.21399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dot2"]
+position = Vector2(-2.02656e-06, 0)
+shape = SubResource("RectangleShape2D_s7ljx")
+
+[node name="wood" type="RigidBody2D" parent="."]
+position = Vector2(-1, 72)
+rotation = 1.57953
+collision_layer = 6
+collision_mask = 7
+mass = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="wood"]
+position = Vector2(-9.53674e-07, 4.76837e-07)
+rotation = -3.27583e-05
+scale = Vector2(1, 1.25)
+texture = ExtResource("1_hsy1q")
+region_enabled = true
+region_rect = Rect2(356.682, 223.663, 6.61667, 48.5222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wood"]
+position = Vector2(-0.999962, 0.00872898)
+shape = SubResource("RectangleShape2D_7g84n")
+
+[node name="rope" type="RigidBody2D" parent="."]
+position = Vector2(20, 48)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="rope"]
+position = Vector2(-21, -9)
+rotation = -4.71404
+scale = Vector2(2.7, 1)
+texture = ExtResource("1_hsy1q")
+region_enabled = true
+region_rect = Rect2(233.057, 243.037, 28.96, 1.95865)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rope"]
+position = Vector2(-21, -10)
+shape = SubResource("RectangleShape2D_i83e4")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-1, 73)
+scale = Vector2(5, 1)
+node_a = NodePath("../rope")
+node_b = NodePath("../wood")
+bias = 0.27
+angular_limit_lower = 1.07687
+angular_limit_upper = 0.987856
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+node_a = NodePath("../dot2")
+node_b = NodePath("../rope")

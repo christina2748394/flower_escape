@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cprx28nv7gvbo"]
+
+[ext_resource type="Texture2D" uid="uid://b8ionokmb7d0w" path="res://assets/sprites/Mechanices/assets_dungeon.png" id="1_l561p"]
+[ext_resource type="Script" path="res://scripts/sprite_2d.gd" id="2_pp347"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thd3v"]
+size = Vector2(25.875, 25)
+
+[node name="button" type="Sprite2D"]
+texture = ExtResource("1_l561p")
+hframes = 3
+vframes = 4
+frame = 1
+script = ExtResource("2_pp347")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.0625, -0.5)
+shape = SubResource("RectangleShape2D_thd3v")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

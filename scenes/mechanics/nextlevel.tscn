@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://bk6txbfa01v5t"]
+
+[ext_resource type="Script" path="res://scripts/nextlevel.gd" id="1_6gtxc"]
+[ext_resource type="Texture2D" uid="uid://b5n7jsq1klghb" path="res://assets/sprites/Mechanices/32x32-0padding.png" id="2_otci6"]
+[ext_resource type="PackedScene" uid="uid://bgnloewx28drq" path="res://sc/mechanics/confetti.tscn" id="3_ngqso"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1p36"]
+radius = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q0gj"]
+atlas = ExtResource("2_otci6")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcvsj"]
+atlas = ExtResource("2_otci6")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x47s6"]
+atlas = ExtResource("2_otci6")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aeb7"]
+atlas = ExtResource("2_otci6")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2r8f"]
+atlas = ExtResource("2_otci6")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4eag"]
+atlas = ExtResource("2_otci6")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bci0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q0gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcvsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x47s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aeb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2r8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4eag")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="door" type="Area2D"]
+z_index = 20
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6gtxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_p1p36")
+
+[node name="celebrate" type="Node2D" parent="."]
+visible = false
+
+[node name="confetti2" parent="celebrate" instance=ExtResource("3_ngqso")]
+position = Vector2(11, 0)
+
+[node name="confetti" parent="celebrate" instance=ExtResource("3_ngqso")]
+position = Vector2(-11, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_bci0h")
+autoplay = "default"
+frame_progress = 0.0267046
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

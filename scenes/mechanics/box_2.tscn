@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgt05032lg5q6"]
+
+[ext_resource type="Texture2D" uid="uid://buasj5d50o66b" path="res://assets/sprites/World/Legacy_Adventure_Pack/Assets/Assets.png" id="1_f222t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8di3y"]
+size = Vector2(16, 14.5)
+
+[node name="box2" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_8di3y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f222t")
+region_enabled = true
+region_rect = Rect2(176.013, 47.5088, 16.3924, 15.2352)

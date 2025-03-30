@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://swv1vb84ubbb"]
+
+[ext_resource type="Script" path="res://scripts/pausemenu.gd" id="1_d4g2m"]
+[ext_resource type="Texture2D" uid="uid://ch1u1eku2oken" path="res://assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png@2x/Icon/Replay@2x.png" id="2_os6qi"]
+[ext_resource type="Texture2D" uid="uid://bud3ls8ww40l" path="res://assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png@2x/Icon/Levels@2x.png" id="3_tm76d"]
+[ext_resource type="Texture2D" uid="uid://c7w3nwsbqoerw" path="res://assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png@2x/Icon/Play@2x.png" id="4_cgtsb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lapj"]
+atlas = ExtResource("2_os6qi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbuh4"]
+atlas = ExtResource("4_cgtsb")
+
+[node name="pausemenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4g2m")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -57.0
+offset_right = 204.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="retry" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2lapj")
+
+[node name="levels" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_tm76d")
+
+[node name="remuse" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_cbuh4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 31
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.027451, 0.0352941, 0.431373)
+
+[connection signal="pressed" from="GridContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GridContainer/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="GridContainer/remuse" to="." method="_on_remuse_pressed"]

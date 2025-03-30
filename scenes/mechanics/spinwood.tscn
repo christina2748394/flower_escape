@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://du4pwdi37j7ly"]
+
+[ext_resource type="Texture2D" uid="uid://buasj5d50o66b" path="res://assets/sprites/World/Legacy_Adventure_Pack/Assets/Assets.png" id="1_bv8vh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pac4"]
+size = Vector2(46.9965, 5.04913)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hciyn"]
+size = Vector2(4, 3)
+
+[node name="spinwood" type="Node"]
+
+[node name="wood" type="RigidBody2D" parent="."]
+position = Vector2(16, -59)
+rotation = -1.56752
+collision_layer = 4
+collision_mask = 7
+mass = 1.083
+gravity_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wood"]
+position = Vector2(-13.5016, 1.49181)
+rotation = 1.56861
+shape = SubResource("RectangleShape2D_5pac4")
+
+[node name="Sprite2D" type="Sprite2D" parent="wood"]
+position = Vector2(-13.9934, 2.04586)
+rotation = -3.27583e-05
+texture = ExtResource("1_bv8vh")
+region_enabled = true
+region_rect = Rect2(356.682, 223.663, 6.61667, 48.5222)
+
+[node name="dot" type="StaticBody2D" parent="."]
+position = Vector2(0, -22)
+
+[node name="Sprite2D" type="Sprite2D" parent="dot"]
+position = Vector2(17.0041, -22.9959)
+rotation = -1.56876
+texture = ExtResource("1_bv8vh")
+region_enabled = true
+region_rect = Rect2(228.912, 241.916, 4.08231, 4.21399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dot"]
+position = Vector2(17, -23)
+shape = SubResource("RectangleShape2D_hciyn")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(17, -45)
+node_a = NodePath("../dot")
+node_b = NodePath("../wood")
+disable_collision = false
+softness = 2.0
