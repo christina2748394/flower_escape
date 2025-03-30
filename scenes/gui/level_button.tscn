@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqyhcryy874un"]
+
+[ext_resource type="Texture2D" uid="uid://cok5lbkrqxqj8" path="res://buttons_atlas_texture.tres" id="1_ygbhi"]
+[ext_resource type="Texture2D" uid="uid://bh42nejde4hfy" path="res://assets/sprites/levels_buttons.png" id="2_fva6n"]
+[ext_resource type="Script" path="res://scripts/level_button.gd" id="3_6xjab"]
+[ext_resource type="FontFile" uid="uid://cfr7h8ocq8p6b" path="res://assets/fonts/PixelOperator8.ttf" id="3_a5a3d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooall"]
+atlas = ExtResource("2_fva6n")
+region = Rect2(610, 506, 160, 161.604)
+
+[node name="LevelButton" type="TextureButton"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("1_ygbhi")
+texture_disabled = SubResource("AtlasTexture_ooall")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_6xjab")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_a5a3d")
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 35
+clip_text = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

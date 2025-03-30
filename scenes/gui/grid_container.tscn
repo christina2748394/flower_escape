@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxbyenh5k3wtc"]
+
+[ext_resource type="PackedScene" uid="uid://bqyhcryy874un" path="res://sc/GUI/level_button.tscn" id="1_molob"]
+
+[node name="GridContainer" type="GridContainer"]
+custom_minimum_size = Vector2(590, 316)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 21.0
+offset_right = -5.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="LevelButton" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton4" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton5" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton6" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton7" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton8" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton9" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton10" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton11" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton12" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton13" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton14" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2
+
+[node name="LevelButton15" parent="." instance=ExtResource("1_molob")]
+layout_mode = 2

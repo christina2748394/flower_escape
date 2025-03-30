@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp35bjmrrg8kn"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_egf7s"]
+[ext_resource type="Texture2D" uid="uid://cuew15ytk1ulf" path="res://assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Panel/Body/Headless.png" id="2_ul36k"]
+[ext_resource type="PackedScene" uid="uid://bxbyenh5k3wtc" path="res://sc/GUI/grid_container.tscn" id="3_tj3fl"]
+[ext_resource type="Texture2D" uid="uid://b76a1on4xc0p1" path="res://assets/sprites/buttons.png" id="4_gmgxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hkmw"]
+atlas = ExtResource("4_gmgxf")
+region = Rect2(1100, 248, 160, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg77m"]
+atlas = ExtResource("4_gmgxf")
+region = Rect2(1100, 508, 160, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axrk3"]
+atlas = ExtResource("4_gmgxf")
+region = Rect2(1300, 248, 160, 168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehc74"]
+atlas = ExtResource("4_gmgxf")
+region = Rect2(1300, 508, 160, 168)
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_egf7s")
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 45.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ul36k")
+expand_mode = 1
+
+[node name="LevelMenu" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 103.0
+offset_right = 980.0
+offset_bottom = 533.0
+expand_mode = 1
+
+[node name="ClipControl" type="Control" parent="LevelMenu"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 105.0
+offset_top = 50.0
+offset_right = 695.0
+offset_bottom = 369.0
+
+[node name="GridContainer" type="HBoxContainer" parent="LevelMenu/ClipControl"]
+custom_minimum_size = Vector2(590, 316)
+layout_mode = 0
+offset_right = 1184.0
+offset_bottom = 316.0
+
+[node name="GridContainer" parent="LevelMenu/ClipControl/GridContainer" instance=ExtResource("3_tj3fl")]
+layout_mode = 2
+
+[node name="GridContainer2" parent="LevelMenu/ClipControl/GridContainer" instance=ExtResource("3_tj3fl")]
+layout_mode = 2
+
+[node name="BackButton" type="TextureButton" parent="LevelMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -84.0
+offset_right = 80.0
+offset_bottom = 76.0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_2hkmw")
+texture_hover = SubResource("AtlasTexture_yg77m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="NextButton" type="TextureButton" parent="LevelMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -84.0
+offset_right = -15.0
+offset_bottom = 76.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_axrk3")
+texture_hover = SubResource("AtlasTexture_ehc74")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="LevelMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LevelMenu/NextButton" to="." method="_on_next_button_pressed"]
